@@ -58,6 +58,8 @@ use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Product\ProductCla
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Product\ProductClassProductConcreteAfterUpdatePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Product\ProductClassProductConcretePostCreatePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Product\ShipmentTypeProductConcreteExpanderPlugin;
+use Pyz\Zed\Material\Communication\Plugin\ProductManagement\MaterialProductAbstractAfterUpdatePlugin;
+use Pyz\Zed\Material\Communication\Plugin\Product\MaterialProductAbstractPostCreatePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Product\ShipmentTypeProductConcretePostCreatePlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\Product\ShipmentTypeProductConcretePostUpdatePlugin;
 
@@ -75,6 +77,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
             new ImageSetProductAbstractPostCreatePlugin(),
             new TaxSetProductAbstractPostCreatePlugin(),
             new PriceProductAbstractPostCreatePlugin(),
+            new MaterialProductAbstractPostCreatePlugin(),
         ];
     }
 
@@ -113,6 +116,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
             new ImageSetProductAbstractAfterUpdatePlugin(),
             new TaxSetProductAbstractAfterUpdatePlugin(),
             new PriceProductAbstractAfterUpdatePlugin(),
+            new MaterialProductAbstractAfterUpdatePlugin(),
         ];
     }
 

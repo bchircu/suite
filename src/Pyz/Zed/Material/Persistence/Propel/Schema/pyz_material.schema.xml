@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" name="zed" namespace="Orm\Zed\Material\Persistence" package="src.Orm.Zed.Material.Persistence">
+    <table name="pyz_material" phpName="PyzMaterial">
+        <column name="id_material" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="name" required="true" size="255" type="VARCHAR"/>
+        
+        <id-method-parameter value="id_material"/>
+        
+        <unique>
+            <unique-column name="name"/>
+        </unique>
+    </table>
+    
+    <table name="pyz_product_material" phpName="PyzProductMaterial">
+        <column name="id_product_material" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_product" required="true" type="INTEGER"/>
+        <column name="fk_material" required="true" type="INTEGER"/>
+        
+        <foreign-key name="pyz_product_material-fk_product" foreignTable="spy_product" phpName="Product">
+            <reference foreign="id_product" local="fk_product"/>
+        </foreign-key>
+        
+        <foreign-key name="pyz_product_material-fk_material" foreignTable="pyz_material" phpName="Material">
+            <reference foreign="id_material" local="fk_material"/>
+        </foreign-key>
+        
+        <unique>
+            <unique-column name="fk_product"/>
+            <unique-column name="fk_material"/>
+        </unique>
+    </table>
+</database>

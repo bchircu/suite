@@ -39,6 +39,11 @@ use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductCo
 use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductConcreteFormEditTabsExpanderPlugin;
 use Spryker\Zed\ProductManagement\ProductManagementDependencyProvider as SprykerProductManagementDependencyProvider;
 use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
+use Pyz\Zed\Material\Communication\Plugin\ProductManagement\MaterialProductAbstractFormExpanderPlugin;
+use Pyz\Zed\Material\Communication\Plugin\ProductManagement\MaterialProductAbstractEditViewExpanderPlugin;
+use Pyz\Zed\Material\Communication\Plugin\ProductManagement\MaterialProductAbstractFormEditDataProviderExpanderPlugin;
+use Pyz\Zed\Material\Communication\Plugin\ProductManagement\MaterialProductAbstractViewActionViewDataExpanderPlugin;
+use Pyz\Zed\Material\Communication\Plugin\ProductManagement\MaterialProductAbstractFormTransferMapperPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ProductClassFormExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ProductClassProductConcreteFormEditDataProviderExpanderPlugin;
 use SprykerFeature\Zed\SelfServicePortal\Communication\Plugin\ProductManagement\ProductClassProductConcreteTransferMapperPlugin;
@@ -163,6 +168,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     protected function getProductAbstractTransferMapperPlugins(): array
     {
         return [
+            new MaterialProductAbstractFormTransferMapperPlugin(),
         ];
     }
 
@@ -173,6 +179,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new MerchantRelationshipProductAbstractFormExpanderPlugin(),
+            new MaterialProductAbstractFormExpanderPlugin(),
         ];
     }
 
@@ -205,6 +212,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new MerchantProductProductAbstractViewActionViewDataExpanderPlugin(),
+            new MaterialProductAbstractViewActionViewDataExpanderPlugin(),
         ];
     }
 
@@ -256,6 +264,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     protected function getProductAbstractFormDataProviderExpanderPlugins(): array
     {
         return [
+            new MaterialProductAbstractFormEditDataProviderExpanderPlugin(),
         ];
     }
 }

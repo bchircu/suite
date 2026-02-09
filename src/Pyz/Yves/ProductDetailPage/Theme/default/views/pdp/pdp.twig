@@ -9,3 +9,37 @@
 
     {{ parent() }}
 {% endblock %}
+
+{% define data = {
+    product: _view.product,
+    productUrl: _view.productUrl,
+    requestReferer: app.request.headers.get('referer'),
+    hostName: app.request.getSchemeAndHttpHost(),
+    title: _view.product.metaTitle | default(_view.product.name),
+    metaTitle: _view.product.metaTitle | default(_view.product.name),
+    metaDescription: _view.product.metaDescription | default,
+    metaKeywords: _view.product.metaKeywords | default,
+    productId: _view.product.idProductConcrete is not empty ? _view.product.idProductConcrete : _view.product.idProductAbstract,
+    isNewCarouselRenderingEnabled: true,
+    material: _view.product.material | default(null),
+} %}
+
+{% block content %}
+    {{ parent() }}
+    
+    {# Override the product-detail molecule to add material #}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var detailsGrid = document.querySelector('.product-detail .grid');
+            if (detailsGrid && '{{ data.material }}') {
+                var materialHtml = '<p class="col col--sm-12 col--md-6 col--lg-4 col--xl-3" itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">' +
+                    '<strong itemprop="name">Material</strong><br>' +
+                    '<span itemprop="value">{{ data.material }}</span>' +
+                    '</p>';
+                detailsGrid.insertAdjacentHTML('afterbegin', materialHtml);
+            }
+        });
+    </script>
+{% endblock %}
+
+

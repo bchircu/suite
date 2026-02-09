@@ -414,3 +414,7 @@ actions:
       source: data/import/common/common/acl_entity_rule.csv
     - data_entity: acl-entity-segment-connector
       source: data/import/common/common/acl_entity_segment_connector.csv
+
+    # Antelope import
+    - data_entity: antelope
+      source: data/import/common/common/antelope.csv

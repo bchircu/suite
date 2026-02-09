@@ -6,4 +6,12 @@
         <property name="storeName" type="string"/>
     </transfer>
 
+    <transfer name="ProductAbstract">
+        <property name="idMaterial" type="int"/>
+    </transfer>
+
+    <transfer name="ProductView">
+        <property name="material" type="string"/>
+    </transfer>
+
 </transfers>

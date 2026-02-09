@@ -1,0 +1,28 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% set widget_title = 'Create Antelope' | trans %}
+
+{% block head_title widget_title %}
+{% block section_title widget_title %}
+
+{% block content %}
+
+    {% embed '@Gui/Partials/widget.twig' %}
+
+        {% block widget_content %}
+
+            {{ form_start(antelopeCreateForm) }}
+
+            {{ form_row(antelopeCreateForm.name) }}
+            {{ form_row(antelopeCreateForm.color) }}
+
+            <input type="submit" class="btn btn-primary safe-submit" value="{{ 'Save' | trans }}" />
+            <a href="{{ backUrl }}" class="btn btn-back">{{ 'Cancel' | trans }}</a>
+
+            {{ form_end(antelopeCreateForm) }}
+
+        {% endblock %}
+
+    {% endembed %}
+
+{% endblock %}

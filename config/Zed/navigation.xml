@@ -777,4 +777,56 @@
             </storage-gui>
         </pages>
     </maintenance>
+    <antelope>
+        <label>Antelopes</label>
+        <title>Antelopes</title>
+        <icon>fa-paw</icon>
+        <bundle>antelope-gui</bundle>
+        <controller>index</controller>
+        <action>index</action>
+        <pages>
+            <antelope-list>
+                <label>Antelope List</label>
+                <title>Antelope List</title>
+                <bundle>antelope-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </antelope-list>
+            <antelope-create>
+                <label>Create Antelope</label>
+                <title>Create Antelope</title>
+                <bundle>antelope-gui</bundle>
+                <controller>create</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </antelope-create>
+        </pages>
+    </antelope>
+    <material>
+        <label>Materials</label>
+        <title>Materials</title>
+        <icon>fa-cube</icon>
+        <bundle>material</bundle>
+        <controller>index</controller>
+        <action>index</action>
+        <pages>
+            <material-list>
+                <label>Material List</label>
+                <title>Material List</title>
+                <bundle>material</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </material-list>
+            <material-create>
+                <label>Create Material</label>
+                <title>Create Material</title>
+                <bundle>material</bundle>
+                <controller>create</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </material-create>
+        </pages>
+    </material>
 </config>

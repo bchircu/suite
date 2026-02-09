@@ -434,3 +434,7 @@ actions:
       source: data/import/common/common/product_class.csv
     - data_entity: product-to-product-class
       source: data/import/common/common/product_to_product_class.csv
+
+    # Antelope import
+    - data_entity: antelope
+      source: data/import/common/common/antelope.csv

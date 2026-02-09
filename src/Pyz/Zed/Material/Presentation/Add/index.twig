@@ -1,0 +1,13 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% block section_title 'Add Material' %}
+
+{% block content %}
+    <form action="{{ url('/material/add') }}" method="post">
+        <div class="form-group">
+            <label for="name">Material Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+{% endblock %}

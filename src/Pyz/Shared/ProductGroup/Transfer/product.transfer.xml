@@ -11,5 +11,6 @@
 
     <transfer name="ProductView">
         <property name="colorCode" type="string"/>
+        <property name="material" type="string"/>
     </transfer>
 </transfers>
