@@ -129,6 +129,7 @@ use Spryker\Zed\ShipmentTypeDataImport\Communication\Plugin\DataImport\ShipmentT
 use Spryker\Zed\ShipmentTypeServicePointDataImport\Communication\Plugin\DataImport\ShipmentTypeServiceTypeDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyBusinessUnitDataImportPlugin;
 use Pyz\Zed\AntelopeDataImporter\Communication\Plugin\DataImport\AntelopeDataImportPlugin;
+use Pyz\Zed\MaterialDataImporter\Communication\Plugin\DataImport\MaterialDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyUserDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemDataImportPlugin;
@@ -466,6 +467,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new MerchantCombinedProductDataImportPlugin(),
             new MerchantCombinedProductOfferDataImportPlugin(),
             new AntelopeDataImportPlugin(),
+            new MaterialDataImportPlugin(),
         ];
     }
 

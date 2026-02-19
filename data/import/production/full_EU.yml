@@ -418,3 +418,7 @@ actions:
     # Antelope import
     - data_entity: antelope
       source: data/import/common/common/antelope.csv
+
+    # Material import
+    - data_entity: material
+      source: data/import/common/common/material.csv

@@ -6,5 +6,9 @@
         <property name="name" type="string"/>
         <property name="idProduct" type="int"/>
     </transfer>
+
+    <transfer name="MaterialCollection">
+        <property name="materials" type="Material[]" singular="material"/>
+    </transfer>
     
 </transfers>

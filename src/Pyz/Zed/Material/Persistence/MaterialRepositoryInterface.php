@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\Material\Persistence;
 
+use Generated\Shared\Transfer\MaterialCollectionTransfer;
 use Generated\Shared\Transfer\MaterialTransfer;
 
 interface MaterialRepositoryInterface
@@ -17,4 +18,9 @@ interface MaterialRepositoryInterface
      * @return \Generated\Shared\Transfer\MaterialTransfer|null
      */
     public function findMaterialByProductAbstractId(int $idProductAbstract): ?MaterialTransfer;
+
+    /**
+     * @return \Generated\Shared\Transfer\MaterialCollectionTransfer
+     */
+    public function getMaterials(): MaterialCollectionTransfer;
 }

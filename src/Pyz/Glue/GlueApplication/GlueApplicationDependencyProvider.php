@@ -222,6 +222,7 @@ use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetPriceModeBeforeA
 use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\AbstractProductsProductReviewsResourceRoutePlugin;
 use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\ProductReviewsRelationshipByProductAbstractSkuPlugin;
 use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\ProductReviewsRelationshipByProductConcreteSkuPlugin;
+use Pyz\Glue\MaterialsRestApi\Plugin\GlueApplication\MaterialsResourceRoutePlugin;
 use Spryker\Glue\ProductsCategoriesResourceRelationship\Plugin\AbstractProductsCategoriesResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
@@ -415,6 +416,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new SspAssetsResourceRoutePlugin(),
             new SspInquiriesResourceRoutePlugin(),
             new SspServicesResourceRoutePlugin(),
+            new MaterialsResourceRoutePlugin(),
         ];
     }
 

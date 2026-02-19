@@ -54,4 +54,14 @@ class MaterialFacade extends AbstractFacade implements MaterialFacadeInterface
             ->createMaterialWriter()
             ->assignMaterialToProductAbstract($idProductAbstract, $idMaterial);
     }
+
+    /**
+     * @return \Generated\Shared\Transfer\MaterialCollectionTransfer
+     */
+    public function getMaterials(): \Generated\Shared\Transfer\MaterialCollectionTransfer
+    {
+        return $this->getFactory()
+            ->createMaterialReader()
+            ->getMaterials();
+    }
 }

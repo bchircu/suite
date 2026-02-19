@@ -37,4 +37,12 @@ class MaterialReader
     {
         return $this->materialRepository->findMaterialByProductAbstractId($idProductAbstract);
     }
+
+    /**
+     * @return \Generated\Shared\Transfer\MaterialCollectionTransfer
+     */
+    public function getMaterials(): \Generated\Shared\Transfer\MaterialCollectionTransfer
+    {
+        return $this->materialRepository->getMaterials();
+    }
 }

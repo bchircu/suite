@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\Material\Business;
 
+use Generated\Shared\Transfer\MaterialCollectionTransfer;
 use Generated\Shared\Transfer\MaterialTransfer;
 
 interface MaterialFacadeInterface
@@ -30,4 +31,9 @@ interface MaterialFacadeInterface
      * @return void
      */
     public function assignMaterialToProductAbstract(int $idProductAbstract, int $idMaterial): void;
+
+    /**
+     * @return \Generated\Shared\Transfer\MaterialCollectionTransfer
+     */
+    public function getMaterials(): MaterialCollectionTransfer;
 }

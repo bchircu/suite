@@ -5,6 +5,8 @@ namespace Pyz\Zed\Training\Business;
 use Generated\Shared\Transfer\AntelopeCriteriaTransfer;
 use Generated\Shared\Transfer\AntelopeResponseTransfer;
 use Generated\Shared\Transfer\AntelopeTransfer;
+use Generated\Shared\Transfer\MaterialCollectionTransfer;
+use Generated\Shared\Transfer\MaterialTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
@@ -24,5 +26,19 @@ class TrainingFacade extends AbstractFacade implements TrainingFacadeInterface
         return $this->getFactory()
             ->createAntelopeReader()
             ->getAntelope($antelopeCriteria);
+    }
+    
+    public function createMaterial(MaterialTransfer $materialTransfer): MaterialTransfer
+    {
+        return $this->getFactory()
+            ->createMaterialWriter()
+            ->create($materialTransfer);
+    }
+
+    public function getMaterials(): MaterialCollectionTransfer
+    {
+        return $this->getFactory()
+            ->createMaterialReader()
+            ->getMaterials();
     }
 }

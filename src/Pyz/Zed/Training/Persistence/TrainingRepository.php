@@ -4,6 +4,8 @@ namespace Pyz\Zed\Training\Persistence;
 
 use Generated\Shared\Transfer\AntelopeCriteriaTransfer;
 use Generated\Shared\Transfer\AntelopeTransfer;
+use Generated\Shared\Transfer\MaterialCollectionTransfer;
+use Generated\Shared\Transfer\MaterialTransfer;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
 use Exception;
 
@@ -25,6 +27,23 @@ class TrainingRepository extends AbstractRepository implements TrainingRepositor
         
         $antelopeTransfer = new AntelopeTransfer();
         return $antelopeTransfer->fromArray($antelopeEntity->toArray(), true);
+    }
+
+    public function getMaterials(): MaterialCollectionTransfer
+    {
+        $materialEntities = $this->getFactory()
+            ->createMaterialQuery()
+            ->find();
+
+        $materialCollectionTransfer = new MaterialCollectionTransfer();
+
+        foreach ($materialEntities as $materialEntity) {
+            $materialTransfer = new MaterialTransfer();
+            $materialTransfer->fromArray($materialEntity->toArray(), true);
+            $materialCollectionTransfer->addMaterial($materialTransfer);
+        }
+
+        return $materialCollectionTransfer;
     }
 }
  

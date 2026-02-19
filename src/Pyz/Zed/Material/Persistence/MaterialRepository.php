@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\Material\Persistence;
 
+use Generated\Shared\Transfer\MaterialCollectionTransfer;
 use Generated\Shared\Transfer\MaterialTransfer;
 use Orm\Zed\Material\Persistence\PyzProductMaterial;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
@@ -62,5 +63,26 @@ class MaterialRepository extends AbstractRepository implements MaterialRepositor
 
         // Then find the material for that concrete product
         return $this->findMaterialByProductId($productConcreteEntity->getIdProduct());
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\MaterialCollectionTransfer
+     */
+    public function getMaterials(): MaterialCollectionTransfer
+    {
+        $materialEntities = $this->getFactory()
+            ->createMaterialQuery()
+            ->find();
+
+        $materialCollectionTransfer = new MaterialCollectionTransfer();
+
+        foreach ($materialEntities as $materialEntity) {
+            $materialTransfer = new MaterialTransfer();
+            $materialTransfer->setIdMaterial($materialEntity->getIdMaterial());
+            $materialTransfer->setName($materialEntity->getName());
+            $materialCollectionTransfer->addMaterial($materialTransfer);
+        }
+
+        return $materialCollectionTransfer;
     }
 }
