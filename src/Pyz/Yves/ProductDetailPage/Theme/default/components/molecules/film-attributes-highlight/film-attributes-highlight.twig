@@ -1,0 +1,39 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'film-attributes-highlight',
+    tag: 'section',
+} %}
+
+{% define data = {
+    releaseDate: null,
+    genre: null,
+} %}
+
+{% block body %}
+    {% if data.releaseDate or data.genre %}
+        {% if data.releaseDate %}
+            <div class="{{ config.name }}__item">
+                <span class="{{ config.name }}__icon" aria-hidden="true">
+                    {% include atom('icon') with { data: { name: 'clock' } } only %}
+                </span>
+                <span>
+                    <strong class="{{ config.name }}__label">{{ 'product.attribute.release_date' | trans }}</strong>
+                    <span class="{{ config.name }}__value">{{ data.releaseDate }}</span>
+                </span>
+            </div>
+        {% endif %}
+
+        {% if data.genre %}
+            <div class="{{ config.name }}__item">
+                <span class="{{ config.name }}__icon" aria-hidden="true">
+                    {% include atom('icon') with { data: { name: 'user' } } only %}
+                </span>
+                <span>
+                    <strong class="{{ config.name }}__label">{{ 'product.attribute.genre' | trans }}</strong>
+                    <span class="{{ config.name }}__value">{{ data.genre }}</span>
+                </span>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

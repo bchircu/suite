@@ -1,0 +1,45 @@
+@mixin film-attributes-highlight($name: '.film-attributes-highlight') {
+    #{$name} {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding: 1.25rem 1.5rem;
+        background: #f7f9fc;
+        border-top: 1px solid #dadada;
+
+        &__item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            min-width: 200px;
+            font-size: 0.9rem;
+            color: #333333;
+        }
+
+        &__icon {
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+            color: #595959;
+
+            .icon {
+                width: 1rem;
+                height: 1rem;
+                fill: currentColor;
+            }
+        }
+
+        &__label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.15rem;
+        }
+
+        &__value {
+            display: block;
+            color: #595959;
+        }
+    }
+}
+
+@include film-attributes-highlight();

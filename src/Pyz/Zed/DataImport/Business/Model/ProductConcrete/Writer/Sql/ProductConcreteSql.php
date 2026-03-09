@@ -22,6 +22,7 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
       input.warehouses,
       input.concrete_sku,
       input.is_active,
+      input.is_download,
       input.attributes,
       input.sku_product_abstract,
       id_product as idProduct,
@@ -32,6 +33,7 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
              unnest(? :: TEXT []) AS warehouses,
              unnest(? :: VARCHAR []) AS concrete_sku,
              unnest(? :: BOOLEAN []) AS is_active,
+             unnest(? :: BOOLEAN []) AS is_download,
              json_array_elements(?) AS attributes,
              unnest(? :: VARCHAR []) AS sku_product_abstract
          ) input
@@ -46,6 +48,7 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
       sku = records.concrete_sku,
       fk_product_abstract = records.fk_product_abstract,
       is_active = records.is_active,
+      is_download = records.is_download,
       attributes = records.attributes,
       updated_at = now()
     FROM records
@@ -59,6 +62,7 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
       warehouses,
       sku,
       is_active,
+      is_download,
       attributes,
       fk_product_abstract,
       created_at,
@@ -70,6 +74,7 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
         warehouses,
         concrete_sku,
         is_active,
+        is_download,
         attributes,
         fk_product_abstract,
         now(),

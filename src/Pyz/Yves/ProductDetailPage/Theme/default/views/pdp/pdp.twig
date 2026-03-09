@@ -38,6 +38,34 @@
                     '</p>';
                 detailsGrid.insertAdjacentHTML('afterbegin', materialHtml);
             }
+
+            // Film age toggle: clicking the icon switches between release date and calculated age
+            document.querySelectorAll('.film-age-toggle__toggle-button').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var wrapper = btn.closest('[data-release-date]') || btn.closest('.film-age-toggle');
+                    var dateDisplay = wrapper && wrapper.querySelector('.film-age-toggle__date-display');
+                    if (!dateDisplay) return;
+
+                    if (btn.getAttribute('data-showing-age') === '1') {
+                        dateDisplay.textContent = wrapper.getAttribute('data-release-date');
+                        btn.setAttribute('data-showing-age', '0');
+                    } else {
+                        var releaseDate = wrapper.getAttribute('data-release-date');
+                        var release = new Date(releaseDate);
+                        var now = new Date();
+                        var diffDays = Math.ceil(Math.abs(now - release) / 86400000);
+                        var years = Math.floor(diffDays / 365);
+                        var months = Math.floor((diffDays % 365) / 30);
+                        var days = diffDays % 30;
+                        var parts = [];
+                        if (years > 0) parts.push(years + ' year' + (years !== 1 ? 's' : ''));
+                        if (months > 0) parts.push(months + ' month' + (months !== 1 ? 's' : ''));
+                        if (days > 0 && years === 0) parts.push(days + ' day' + (days !== 1 ? 's' : ''));
+                        dateDisplay.textContent = parts.length > 0 ? parts.join(', ') + ' old' : 'Released today';
+                        btn.setAttribute('data-showing-age', '1');
+                    }
+                });
+            });
         });
     </script>
 {% endblock %}

@@ -15,6 +15,7 @@
     </table>
 
     <table name="spy_product">
+        <column name="is_download" type="BOOLEAN" required="true" defaultValue="false"/>
         <behavior name="event">
             <parameter name="spy_product_all" column="*"/>
         </behavior>

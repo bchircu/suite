@@ -10,6 +10,10 @@
         <property name="idMaterial" type="int"/>
     </transfer>
 
+    <transfer name="ProductConcrete">
+        <property name="isDownload" type="bool"/>
+    </transfer>
+
     <transfer name="ProductView">
         <property name="material" type="string"/>
     </transfer>

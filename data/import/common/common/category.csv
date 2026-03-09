@@ -19,3 +19,5 @@ gift-cards,demoshop,Geschenkgutscheine,Gift Cards,Geschenkgutscheine,Gift Cards,
 fish,food,Fisch,Fish,,,,,,,1,1,1,1,0,1,50,Catalog (default)
 vegetables,food,Gemüse,Vegetables,,,,,,,1,1,1,1,0,1,50,"Catalog (default)"
 services,demoshop,Services,Services,Services,Services,Services,Services,Services,Services,1,1,1,1,0,1,200,Catalog (default)
+movies,demoshop,Movies,Movies,Movies,Movies,Movies and entertainment,Movies and entertainment,Movies,Movies,1,1,1,1,0,1,210,Catalog (default)
+

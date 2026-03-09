@@ -63,6 +63,11 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     /**
      * @var string
      */
+    public const COLUMN_IS_DOWNLOAD = 'is_download';
+
+    /**
+     * @var string
+     */
     public const KEY_ATTRIBUTES = 'attributes';
 
     /**
@@ -220,6 +225,14 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
                 $dataSet[static::COLUMN_IS_QUANTITY_SPLITTABLE] === ''
             ) ? true : $dataSet[static::COLUMN_IS_QUANTITY_SPLITTABLE];
             $productEntityTransfer->setIsQuantitySplittable($isQuantitySplittable);
+        }
+
+        if ($this->isProductColumn(static::COLUMN_IS_DOWNLOAD)) {
+            $isDownload = (
+                !isset($dataSet[static::COLUMN_IS_DOWNLOAD]) ||
+                $dataSet[static::COLUMN_IS_DOWNLOAD] === ''
+            ) ? false : (bool)$dataSet[static::COLUMN_IS_DOWNLOAD];
+            $productEntityTransfer->setIsDownload($isDownload);
         }
 
         $dataSet[static::DATA_PRODUCT_CONCRETE_TRANSFER] = $productEntityTransfer;

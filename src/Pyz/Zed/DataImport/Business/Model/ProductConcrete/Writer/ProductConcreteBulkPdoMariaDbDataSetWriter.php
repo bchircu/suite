@@ -55,6 +55,10 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
             $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_IS_ACTIVE),
             $rowsCount,
         );
+        $isDownload = $this->dataFormatter->formatStringList(
+            $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, 'is_download'),
+            $rowsCount,
+        );
         $skuProductAbstract = $this->dataFormatter->formatStringList(
             $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, static::COLUMN_ABSTRACT_SKU),
             $rowsCount,
@@ -67,6 +71,7 @@ class ProductConcreteBulkPdoMariaDbDataSetWriter extends AbstractProductConcrete
             $warehouses,
             $sku,
             $isActive,
+            $isDownload,
             $attributes,
             $skuProductAbstract,
         ];

@@ -1,0 +1,35 @@
+{% extends molecule('product-detail', '@SprykerShop:ProductDetailPage') %}
+
+{% block body %}
+    <h2 class="title--h5">{{ 'product.attribute.long_description' | trans }}</h2>
+    <p itemprop="description">{{ data.description }}</p>
+
+    <h2 class="title--h5">{{ 'page.product.details' | trans }}</h2>
+    <div class="grid">
+        {% for name, value in data.attributes %}
+            {% if name %}
+                <p class="col col--sm-12 col--md-6 col--lg-4 col--xl-3" itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+                    <strong itemprop="name">{{ ('product.attribute.' ~ name) | trans }}</strong><br>
+                    {% if name == 'release_date' %}
+                        {% include atom('film-age-toggle') with {
+                            data: {
+                                releaseDate: value | join(', ')
+                            }
+                        } only %}
+                    {% else %}
+                        <span itemprop="value">{{ value | join(', ') }}</span>
+                    {% endif %}
+                </p>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% block filmHighlights %}
+        {% include molecule('film-attributes-highlight', 'ProductDetailPage') with {
+            data: {
+                releaseDate: data.attributes.release_date is defined ? data.attributes.release_date | join(', ') : null,
+                genre: data.attributes.genre is defined ? data.attributes.genre | join(', ') : null,
+            }
+        } only %}
+    {% endblock %}
+{% endblock %}

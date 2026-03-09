@@ -14,6 +14,11 @@ use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
 use Pyz\Zed\MerchantProductOfferDataImport\MerchantProductOfferDataImportConfig;
+use Pyz\Zed\Product\Communication\Console\AssignMovieAttributesConsole;
+use Pyz\Zed\Product\Communication\Console\CheckMatrixProductConsole;
+use Pyz\Zed\Product\Communication\Console\CheckProductAttributesConsole;
+use Pyz\Zed\Product\Communication\Console\CreateMovieProductConsole;
+use Pyz\Zed\Product\Communication\Console\CreateProductAttributesConsole;
 use SecurityChecker\Command\SecurityCheckerCommand;
 use Spryker\Zed\AclDataImport\AclDataImportConfig;
 use Spryker\Zed\AclEntityDataImport\AclEntityDataImportConfig;
@@ -234,6 +239,11 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     protected function getConsoleCommands(Container $container): array
     {
         $commands = [
+            new CreateMovieProductConsole(),
+            new CreateProductAttributesConsole(),
+            new AssignMovieAttributesConsole(),
+            new CheckProductAttributesConsole(),
+            new CheckMatrixProductConsole(),
             new OpentelemetryGeneratorConsole(),
             new CacheWarmerConsole(),
             new TwigTemplateWarmerConsole(),

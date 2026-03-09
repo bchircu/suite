@@ -166,3 +166,5 @@ service-001-1,Warehouse1,0,1,0
 service-002-1,Warehouse1,0,1,0
 service-003-1,Warehouse1,0,1,0
 service-004-1,Warehouse1,0,1,0
+MATRIX-001-BLURAY,Warehouse1,50,0,0
+MATRIX-001-DIGITAL,Warehouse1,999,1,0

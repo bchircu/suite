@@ -23,6 +23,7 @@ class ProductConcreteMariaDbSql implements ProductConcreteSqlInterface
           warehouses,
           sku,
           is_active,
+          is_download,
           attributes,
           fk_product_abstract,
           created_at,
@@ -39,6 +40,7 @@ class ProductConcreteMariaDbSql implements ProductConcreteSqlInterface
                   input.warehouses,
                   input.concrete_sku,
                   input.is_active,
+                  input.is_download,
                   input.attributes,
                   input.sku_product_abstract,
                   id_product as idProduct,
@@ -49,6 +51,7 @@ class ProductConcreteMariaDbSql implements ProductConcreteSqlInterface
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.warehouseses, \',\', n.digit + 1), \',\', -1), \'\') as warehouses,
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.concreteSkuses, \',\', n.digit + 1), \',\', -1), \'\') as concrete_sku,
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.isActives, \',\', n.digit + 1), \',\', -1), \'\') as is_active,
+                        NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.isDownloads, \',\', n.digit + 1), \',\', -1), \'\') as is_download,
                         REPLACE(NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.attributeses, \',\', n.digit + 1), \',\', -1), \'\'), \'|\', \',\') as attributes,
                         NULLIF(SUBSTRING_INDEX(SUBSTRING_INDEX(temp.skuProductAbstracts, \',\', n.digit + 1), \',\', -1), \'\') as sku_product_abstract
                    FROM (
@@ -56,6 +59,7 @@ class ProductConcreteMariaDbSql implements ProductConcreteSqlInterface
                                ? as warehouseses,
                                ? as concreteSkuses,
                                ? as isActives,
+                               ? as isDownloads,
                                ? as attributeses,
                                ? as skuProductAbstracts
                    ) temp
@@ -64,6 +68,7 @@ class ProductConcreteMariaDbSql implements ProductConcreteSqlInterface
                         AND LENGTH(REPLACE(warehouseses, \',\', \'\')) <= LENGTH(warehouseses) - n.digit
                         AND LENGTH(REPLACE(concreteSkuses, \',\', \'\')) <= LENGTH(concreteSkuses) - n.digit
                         AND LENGTH(REPLACE(isActives, \',\', \'\')) <= LENGTH(isActives) - n.digit
+                        AND LENGTH(REPLACE(isDownloads, \',\', \'\')) <= LENGTH(isDownloads) - n.digit
                         AND LENGTH(REPLACE(attributeses, \',\', \'\')) <= LENGTH(attributeses) - n.digit
                         AND LENGTH(REPLACE(skuProductAbstracts, \',\', \'\')) <= LENGTH(skuProductAbstracts) - n.digit
                 ) input
@@ -77,6 +82,7 @@ class ProductConcreteMariaDbSql implements ProductConcreteSqlInterface
                 warehouses,
                 concrete_sku,
                 is_active,
+                is_download,
                 attributes,
                 fk_product_abstract,
                 now(),
@@ -88,6 +94,7 @@ class ProductConcreteMariaDbSql implements ProductConcreteSqlInterface
           sku = records.concrete_sku,
           fk_product_abstract = records.fk_product_abstract,
           is_active = records.is_active,
+          is_download = records.is_download,
           attributes = records.attributes,
           updated_at = now()
         RETURNING id_product, sku

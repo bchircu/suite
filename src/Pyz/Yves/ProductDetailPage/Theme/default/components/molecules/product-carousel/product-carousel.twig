@@ -1,0 +1,26 @@
+{% extends molecule('product-carousel', '@SprykerShop:ProductDetailPage') %}
+
+{% block body %}
+    <div style="position: relative;">
+        {# Add release date label on top of carousel #}
+        {% if data.product.attributes.release_date is defined %}
+            {% set releaseDateTimestamp = data.product.attributes.release_date|date('U') %}
+            {% set currentTimestamp = 'now'|date('U') %}
+            {% set daysDifference = ((currentTimestamp - releaseDateTimestamp) / 86400)|round %}
+            
+            {% if daysDifference >= 0 and daysDifference <= 7 %}
+                <span class="release-date-label release-date-label--new" style="display: inline-block; padding: 0.5rem 1rem; font-weight: bold; font-size: 0.875rem; text-align: center; border-radius: 0.25rem; text-transform: uppercase; position: absolute; top: 1rem; left: 1rem; z-index: 999; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); background-color: #e74c3c; color: #fff;">
+                    NEW
+                </span>
+            {% elseif daysDifference > 90 %}
+                <span class="release-date-label release-date-label--offer" style="display: inline-block; padding: 0.5rem 1rem; font-weight: bold; font-size: 0.875rem; text-align: center; border-radius: 0.25rem; text-transform: uppercase; position: absolute; top: 1rem; left: 1rem; z-index: 999; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); background-color: #27ae60; color: #fff;">
+                    OFFER
+                </span>
+            {% endif %}
+        {% endif %}
+        
+        {{ parent() }}
+    </div>
+    
+
+{% endblock %}

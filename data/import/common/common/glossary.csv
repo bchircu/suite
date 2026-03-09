@@ -943,6 +943,8 @@ product.attribute.camera,Camera,en_US
 product.attribute.camera,Camera,de_DE
 product.attribute.gps,GPS,en_US
 product.attribute.gps,GPS,de_DE
+product.attribute.format,Format,en_US
+product.attribute.format,Format,de_DE
 product.attribute.weight,Weight,en_US
 product.attribute.weight,Gewicht,de_DE
 product.attribute.waterproof,Waterproof,en_US
@@ -4872,6 +4874,8 @@ self_service_portal.service.validation.order_not_found,Order with ID %id% not fo
 self_service_portal.service.validation.order_not_found,Bestellung mit ID %id% nicht gefunden.,de_DE
 self_service_portal.service.validation.no_payment_methods_found,No payment methods found for this order.,en_US
 self_service_portal.service.validation.no_payment_methods_found,Keine Zahlungsmethoden für diese Bestellung gefunden.,de_DE
+self_service_portal.service.product.no_shipment_types_available,No shipment types available for this product.,en_US
+self_service_portal.service.product.no_shipment_types_available,Keine Versandarten für dieses Produkt verfügbar.,de_DE
 self_service_portal.service.list.search_placeholder,Search,en_US
 self_service_portal.service.list.search_placeholder,Search,de_DE
 self_service_portal.service.list.search_button,Search,en_US

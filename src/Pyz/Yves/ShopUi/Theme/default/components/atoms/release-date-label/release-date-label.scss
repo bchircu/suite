@@ -1,0 +1,35 @@
+@mixin shop-ui-release-date-label($name: '.release-date-label') {
+    #{$name} {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        font-size: 0.875rem;
+        text-align: center;
+        border-radius: 0.25rem;
+        text-transform: uppercase;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        
+        &--new {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+        
+        &--offer {
+            background-color: #27ae60;
+            color: #fff;
+        }
+        
+        @media (max-width: 768px) {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.75rem;
+            top: 0.5rem;
+            left: 0.5rem;
+        }
+    }
+}
+
+@include shop-ui-release-date-label();

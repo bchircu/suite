@@ -1,0 +1,27 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'release-date-label',
+    tag: 'span',
+} %}
+
+{% define data = {
+    releaseDate: required,
+    currentDate: 'now'|date('Y-m-d'),
+} %}
+
+{% block body %}
+    {% set releaseDateTimestamp = data.releaseDate|date('U') %}
+    {% set currentTimestamp = data.currentDate|date('U') %}
+    {% set daysDifference = ((currentTimestamp - releaseDateTimestamp) / 86400)|round %}
+    
+    {% if daysDifference >= 0 and daysDifference <= 7 %}
+        <span class="{{ config.name }} {{ config.name }}--new {{ config.jsName }}__label" data-qa="component {{ config.name }} new">
+            NEW
+        </span>
+    {% elseif daysDifference > 90 %}
+        <span class="{{ config.name }} {{ config.name}}--offer {{ config.jsName }}__label" data-qa="component {{ config.name }} offer">
+            OFFER
+        </span>
+    {% endif %}
+{% endblock %}
